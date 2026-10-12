@@ -293,6 +293,36 @@
       await sleep(600)
       r.statsInline.backAttr = document.body.getAttribute('data-dsh-claude-stats-position')
       r.statsInline.backLine = document.querySelectorAll('[data-dsh-claude-inline-stats]').length
+      // Change the displayed host reading so the shipped sync and CSS both run.
+      var reading = meter.querySelector('button > span')
+      var originalReading = reading.textContent
+      var wasDark = document.body.hasAttribute('data-ds-dark-theme')
+      var expectedColor = document.createElement('span')
+      document.body.appendChild(expectedColor)
+      r.statsInline.colors = []
+      for (var position of ['context', 'inline']) {
+        window.__pushForm({ statsPosition: position })
+        await sleep(600)
+        for (var dark of [false, true]) {
+          document.body.toggleAttribute('data-ds-dark-theme', dark)
+          for (var stop of [[30, 'green'], [70, 'yellow'], [80, 'orange'], [90, 'red']]) {
+            reading.textContent = stop[0] + '%'
+            await sleep(150)
+            expectedColor.style.color = 'color-mix(in oklch, var(--dsh-claude-tone-' + stop[1] + '), var(--dsh-claude-tone-' + stop[1] + ') 0%)'
+            r.statsInline.colors.push({
+              position: position, dark: dark, occupancy: stop[0],
+              ring: stroke('circle[stroke-dasharray]'),
+              text: getComputedStyle(reading).color,
+              expected: getComputedStyle(expectedColor).color,
+            })
+          }
+        }
+      }
+      reading.textContent = originalReading
+      document.body.toggleAttribute('data-ds-dark-theme', wasDark)
+      expectedColor.remove()
+      window.__pushForm({ statsPosition: 'context' })
+      await sleep(600)
     })
   })
 })()

@@ -1,0 +1,8 @@
+{
+  "at": "2026-10-12",
+  "group": "fixes",
+  "order": 0,
+  "external": false,
+  "zh": "**上下文占用颜色**：修复仅占用 30% 就接近橙色的问题；低于 50% 保持绿色，随后连续渐变至 70% 黄色、80% 橙色、85% 红橙色，90% 起保持红色。圆环与百分比文字同步着色，缓存命中率配色保持原样。",
+  "en": "**Context occupancy colours**: fixes the near-orange warning at only 30% usage. Usage below 50% stays green, then blends continuously through yellow at 70%, orange at 80% and red-orange at 85%, staying red from 90% on. The ring and percentage text share the same colour; cache-hit colours are unchanged."
+}

@@ -291,9 +291,13 @@ module.exports = {
       JSON.stringify({ digits: r.statsInline.digits, staggered: r.statsInline.staggered }))
     check('the cache share and the meter\'s occupancy take their colour bands, and the ring is painted with the reading\'s own',
       r.statsInline.cacheRamp !== null && r.statsInline.cacheRamp.span === 'high' &&
-        r.statsInline.meterRamp !== null && r.statsInline.meterRamp.kind === 'context' && r.statsInline.meterRamp.span === 'high' &&
+        r.statsInline.meterRamp !== null && r.statsInline.meterRamp.kind === 'context' && r.statsInline.meterRamp.span === 'low' &&
         r.statsInline.ringStroke !== null && r.statsInline.ringStroke !== r.statsInline.trackStroke,
       JSON.stringify({ cache: r.statsInline.cacheRamp, meter: r.statsInline.meterRamp, ring: r.statsInline.ringStroke, track: r.statsInline.trackStroke }))
+    check('context colours follow occupancy in both positions and palettes, with matching ring and text',
+      r.statsInline.colors.length === 16 && r.statsInline.colors.every((sample) =>
+        sample.ring === sample.text && sample.text === sample.expected),
+      JSON.stringify(r.statsInline.colors))
     check('asking the numbers back into the popover takes the line away, live',
       r.statsInline.backAttr === 'context' && r.statsInline.backLine === 0,
       JSON.stringify({ attr: r.statsInline.backAttr, line: r.statsInline.backLine }))

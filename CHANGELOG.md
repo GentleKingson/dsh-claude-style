@@ -10,9 +10,17 @@ All notable changes to `dsh-claude-style` are documented here, newest first.
 
 - **兼容 dsh-auto-approve 的 Sandboxed Auto 档位**：装了 dsh-auto-approve 后，首页分段控件里原本缺失的 **Auto** 一格现在绑定它的 `sandboxed-auto` 档位，对话页的权限弹层把它排在 Accept edits 与 Full access 之间，以 **Sandboxed auto** 和一行中文说明显示；部署同时提供 auto mode 插件的 `auto-mode` 时，Auto 一格仍归 `auto-mode`。
 
+### 问题修复
+
+- **上下文占用颜色**：修复仅占用 30% 就接近橙色的问题；低于 50% 保持绿色，随后连续渐变至 70% 黄色、80% 橙色、85% 红橙色，90% 起保持红色。圆环与百分比文字同步着色，缓存命中率配色保持原样。
+
 <h3 id="en-unreleased">Improvements</h3>
 
 - **Compatibility with dsh-auto-approve's Sandboxed Auto tier**: with dsh-auto-approve installed, the home view's segment group, which used to draw no **Auto** segment, now binds that segment to its `sandboxed-auto` preset, and the conversation view's permission popover lists it between Accept edits and Full access as **Sandboxed auto** with a one-line description; when the deployment also offers the auto mode plugin's `auto-mode`, the Auto segment stays with `auto-mode`.
+
+### Bug Fixes
+
+- **Context occupancy colours**: fixes the near-orange warning at only 30% usage. Usage below 50% stays green, then blends continuously through yellow at 70%, orange at 80% and red-orange at 85%, staying red from 90% on. The ring and percentage text share the same colour; cache-hit colours are unchanged.
 
 ## [0.13.2] - 2026-10-11
 
