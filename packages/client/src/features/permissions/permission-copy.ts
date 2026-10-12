@@ -1,8 +1,8 @@
 /**
  * Claude-flavored presentation of the permission presets, keyed by preset
  * id. The host's catalog decides WHICH presets a deployment offers — a
- * third-party plugin's ride in it, the auto mode plugin's `auto-mode` among
- * them — and this table decides how a known one reads. A preset the table
+ * third-party plugin's ride in it, the auto mode plugin's `auto-mode` and
+ * dsh-auto-approve's `sandboxed-auto` among them — and this table decides how a known one reads. A preset the table
  * does not know falls back to the name the catalog carries, so nothing the
  * host offers is ever hidden and a machine id is never shown.
  */
@@ -10,6 +10,7 @@ export const PERMISSION_PRESETS: Record<string, { label: string, desc: string }>
   'read-only': { label: 'Read only', desc: '仅读取文件与分析，不修改代码' },
   'workspace-write': { label: 'Accept edits', desc: '允许编辑工作区文件' },
   'auto-mode': { label: 'Auto mode', desc: '规则放行常规操作，其余由分类器裁决' },
+  'sandboxed-auto': { label: 'Sandboxed auto', desc: '保留工作区沙箱，常规升级由分类器批准' },
   'auto': { label: 'Auto review', desc: '无沙箱运行，调用前由模型审查' },
   'danger-full-access': { label: 'Full access', desc: '自动执行，无需反复确认' }
 }
@@ -23,7 +24,7 @@ export const PERMISSION_PRESETS: Record<string, { label: string, desc: string }>
 export const PERMISSION_SEGMENTS = [
   { label: 'Read', presets: ['read-only'] },
   { label: 'Edit', presets: ['workspace-write'] },
-  { label: 'Auto', presets: ['auto-mode', 'auto'] },
+  { label: 'Auto', presets: ['auto-mode', 'sandboxed-auto', 'auto'] },
   { label: 'Yolo', presets: ['danger-full-access'] }
 ]
 
@@ -43,7 +44,7 @@ export const PERMISSION_HOST_LABEL_KEYS: Record<string, string> = {
 export const PERMISSION_HOST_LABEL_LOCALE = 'zh'
 
 /** Popover row order; a preset the host offers but this list does not know follows in catalog order. */
-export const PERMISSION_ORDER = ['read-only', 'workspace-write', 'auto-mode', 'auto', 'danger-full-access']
+export const PERMISSION_ORDER = ['read-only', 'workspace-write', 'auto-mode', 'sandboxed-auto', 'auto', 'danger-full-access']
 
 /**
  * What the control draws before the host's first catalog read settles: the

@@ -4,6 +4,16 @@ All notable changes to `dsh-claude-style` are documented here, newest first.
 
 ## [Unreleased]
 
+[中文](#cn-unreleased) | [English](#en-unreleased)
+
+<h3 id="cn-unreleased">体验优化</h3>
+
+- **兼容 dsh-auto-approve 的 Sandboxed Auto 档位**：装了 dsh-auto-approve 后，首页分段控件里原本缺失的 **Auto** 一格现在绑定它的 `sandboxed-auto` 档位，对话页的权限弹层把它排在 Accept edits 与 Full access 之间，以 **Sandboxed auto** 和一行中文说明显示；部署同时提供 auto mode 插件的 `auto-mode` 时，Auto 一格仍归 `auto-mode`。
+
+<h3 id="en-unreleased">Improvements</h3>
+
+- **Compatibility with dsh-auto-approve's Sandboxed Auto tier**: with dsh-auto-approve installed, the home view's segment group, which used to draw no **Auto** segment, now binds that segment to its `sandboxed-auto` preset, and the conversation view's permission popover lists it between Accept edits and Full access as **Sandboxed auto** with a one-line description; when the deployment also offers the auto mode plugin's `auto-mode`, the Auto segment stays with `auto-mode`.
+
 ## [0.13.2] - 2026-10-11
 
 [中文](#cn-0.13.2) | [English](#en-0.13.2)
