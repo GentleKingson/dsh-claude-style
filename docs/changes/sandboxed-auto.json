@@ -1,0 +1,8 @@
+{
+  "at": "2026-10-12",
+  "group": "improvements",
+  "order": 0,
+  "external": false,
+  "zh": "**兼容 dsh-auto-approve 的 Sandboxed Auto 档位**：装了 dsh-auto-approve 后，首页分段控件里原本缺失的 **Auto** 一格现在绑定它的 `sandboxed-auto` 档位，对话页的权限弹层把它排在 Accept edits 与 Full access 之间，以 **Sandboxed auto** 和一行中文说明显示；部署同时提供 auto mode 插件的 `auto-mode` 时，Auto 一格仍归 `auto-mode`。",
+  "en": "**Compatibility with dsh-auto-approve's Sandboxed Auto tier**: with dsh-auto-approve installed, the home view's segment group, which used to draw no **Auto** segment, now binds that segment to its `sandboxed-auto` preset, and the conversation view's permission popover lists it between Accept edits and Full access as **Sandboxed auto** with a one-line description; when the deployment also offers the auto mode plugin's `auto-mode`, the Auto segment stays with `auto-mode`."
+}
